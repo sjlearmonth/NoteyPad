@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */; };
 		C41B5FEB2791DD3A00AD1A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */; };
-		C41B5FED2791DD3A00AD1A19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FEC2791DD3A00AD1A19 /* ViewController.swift */; };
+		C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */; };
 		C41B5FF02791DD3A00AD1A19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */; };
 		C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */; };
 		C41B5FF52791DD3B00AD1A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		C41B5FE52791DD3A00AD1A19 /* NoteyPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteyPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C41B5FEC2791DD3A00AD1A19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePadListViewController.swift; sourceTree = "<group>"; };
 		C41B5FEF2791DD3A00AD1A19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C41B5FF22791DD3A00AD1A19 /* NoteyPad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteyPad.xcdatamodel; sourceTree = "<group>"; };
 		C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			children = (
 				C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */,
 				C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */,
-				C41B5FEC2791DD3A00AD1A19 /* ViewController.swift */,
+				C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */,
 				C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */,
 				C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */,
 				C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */,
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C41B5FED2791DD3A00AD1A19 /* ViewController.swift in Sources */,
+				C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */,
 				C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */,
 				C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */,
 				C41B5FEB2791DD3A00AD1A19 /* SceneDelegate.swift in Sources */,
@@ -221,7 +221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -276,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
