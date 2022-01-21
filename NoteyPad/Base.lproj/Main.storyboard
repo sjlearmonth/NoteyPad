@@ -31,7 +31,14 @@
                             <outlet property="delegate" destination="hRM-Rb-ZZ1" id="MDU-y9-9RS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notey" id="3YF-kh-sZp"/>
+                    <navigationItem key="navigationItem" title="Notey" id="3YF-kh-sZp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wQL-o3-lUV">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="hRM-Rb-ZZ1" id="MyO-O0-9cc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4P-rO-8IB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

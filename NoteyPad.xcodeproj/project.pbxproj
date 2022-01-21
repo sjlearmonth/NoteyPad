@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4077B9C279B095D0083DFCA /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4077B9B279B095D0083DFCA /* CreateNoteView.swift */; };
+		C4077B9E279B09720083DFCA /* CreateNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4077B9D279B09720083DFCA /* CreateNoteView.xib */; };
+		C4077BA0279B18790083DFCA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4077B9F279B18790083DFCA /* Model.swift */; };
 		C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */; };
 		C41B5FEB2791DD3A00AD1A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */; };
 		C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4077B9B279B095D0083DFCA /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
+		C4077B9D279B09720083DFCA /* CreateNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNoteView.xib; sourceTree = "<group>"; };
+		C4077B9F279B18790083DFCA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C41B5FE52791DD3A00AD1A19 /* NoteyPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteyPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +72,9 @@
 				C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */,
 				C41B5FF92791DD3B00AD1A19 /* Info.plist */,
 				C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */,
+				C4077B9B279B095D0083DFCA /* CreateNoteView.swift */,
+				C4077B9D279B09720083DFCA /* CreateNoteView.xib */,
+				C4077B9F279B18790083DFCA /* Model.swift */,
 			);
 			path = NoteyPad;
 			sourceTree = "<group>";
@@ -128,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4077B9E279B09720083DFCA /* CreateNoteView.xib in Resources */,
 				C41B5FF82791DD3B00AD1A19 /* LaunchScreen.storyboard in Resources */,
 				C41B5FF52791DD3B00AD1A19 /* Assets.xcassets in Resources */,
 				C41B5FF02791DD3A00AD1A19 /* Main.storyboard in Resources */,
@@ -144,6 +154,8 @@
 				C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */,
 				C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */,
 				C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */,
+				C4077BA0279B18790083DFCA /* Model.swift in Sources */,
+				C4077B9C279B095D0083DFCA /* CreateNoteView.swift in Sources */,
 				C41B5FEB2791DD3A00AD1A19 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
