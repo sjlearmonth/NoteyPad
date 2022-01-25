@@ -17,6 +17,7 @@
 		C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */; };
 		C41B5FF52791DD3B00AD1A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */; };
 		C41B5FF82791DD3B00AD1A19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */; };
+		C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C41B5FF72791DD3B00AD1A19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C41B5FF92791DD3B00AD1A19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */,
 				C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */,
+				C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */,
 				C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */,
 				C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */,
 				C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 			files = (
 				C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */,
 				C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */,
+				C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */,
 				C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */,
 				C4077BA0279B18790083DFCA /* Model.swift in Sources */,
 				C4077B9C279B095D0083DFCA /* CreateNoteView.swift in Sources */,

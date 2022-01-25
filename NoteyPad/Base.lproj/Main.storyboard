@@ -8,10 +8,42 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--NoteTitles-->
+        <!--Notey-->
+        <scene sceneID="Azn-6g-tjf">
+            <objects>
+                <tableViewController id="GTk-e7-JUJ" userLabel="Notey" customClass="CategoryViewController" customModule="NoteyPad" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cbn-JI-42A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aqb-VT-KA1">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aqb-VT-KA1" id="Fpp-vP-QuV">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GTk-e7-JUJ" id="v7Y-GE-hNw"/>
+                            <outlet property="delegate" destination="GTk-e7-JUJ" id="HFB-Z9-R06"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="1iR-Ok-cs3"/>
+                    <connections>
+                        <segue destination="hRM-Rb-ZZ1" kind="show" identifier="fromCategoryToTitles" id="YRh-IT-dN4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XXr-Xm-iFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="903" y="21"/>
+        </scene>
+        <!--Items-->
         <scene sceneID="uzs-3v-tyn">
             <objects>
-                <tableViewController id="hRM-Rb-ZZ1" userLabel="NoteTitles" customClass="NotePadListViewController" customModule="NoteyPad" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hRM-Rb-ZZ1" userLabel="Items" customClass="NotePadListViewController" customModule="NoteyPad" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Laq-Hh-erK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +74,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4P-rO-8IB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="21"/>
+            <point key="canvasLocation" x="1774" y="21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9NQ-sW-Vsb">
@@ -70,7 +102,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hRM-Rb-ZZ1" kind="relationship" relationship="rootViewController" id="GLz-3q-o0a"/>
+                        <segue destination="GTk-e7-JUJ" kind="relationship" relationship="rootViewController" id="VP2-Jy-Us3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skh-PI-RTV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
