@@ -8,26 +8,23 @@
 import UIKit
 
 protocol CreateNoteViewProtocol: AnyObject {
-    func send(title: String, content: String)
+    func send(note: Note)
 }
 
-class CreateNoteView: UIView, UITextViewDelegate {
+class CreateNoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
 
-    var savedNoteTitle: String? {
+    var savedNote: Note? {
         didSet {
-            if savedNoteTitle == nil {
+            if savedNote == nil {
                 noteTitle.text = "Note title"
-            } else {
-                noteTitle.text = savedNoteTitle
-            }
-        }
-    }
-    var savedNoteContent: String? {
-        didSet {
-            if savedNoteContent == nil {
+                noteTitle.textColor = UIColor.lightGray
                 noteContent.text = "Type something interesting..."
+                noteContent.textColor = UIColor.lightGray
             } else {
-                noteContent.text = savedNoteContent
+                noteTitle.text = savedNote!.title
+                noteTitle.textColor = UIColor.black
+                noteContent.text = savedNote!.content
+                noteContent.textColor = UIColor.black
             }
         }
     }
@@ -40,7 +37,7 @@ class CreateNoteView: UIView, UITextViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        
+        noteTitle.delegate = self
         noteContent.delegate = self
     }
     
@@ -60,9 +57,11 @@ class CreateNoteView: UIView, UITextViewDelegate {
     }
     
     @IBAction func saveButtonTapped(_ UIButton: Any) {
-        let title = noteTitle.text ?? "No Title"
-        let content = noteContent.text ?? "No Content"
-        self.delegate.send(title: title, content: content)
+        var note = Note(title: noteTitle!.text!, content: noteContent!.text, row: nil)
+        if savedNote != nil {
+            note.row = savedNote!.row
+        }
+        self.delegate.send(note: note)
         self.removeFromSuperview()
     }
     
@@ -70,6 +69,13 @@ class CreateNoteView: UIView, UITextViewDelegate {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.black
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.textColor == UIColor.lightGray {
+            textField.text = nil
+            textField.textColor = UIColor.black
         }
     }
 }

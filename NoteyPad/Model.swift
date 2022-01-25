@@ -10,5 +10,7 @@ import Foundation
 struct Note {
     let title: String
     let content: String
+    var row: Int?
 }
+
 

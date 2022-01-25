@@ -9,7 +9,7 @@ import UIKit
 
 class NotePadListViewController: UITableViewController {
 
-    var itemArray = [Note(title: "My Day", content: "Got up, had a shower, got dressed, ..."), Note(title: "My Marriage", content: "OK, this is how I see my marriage these days, ..."), Note(title: "Alfie", content: "Alfie is my dog, he is a large size mixed breed from Romania, ...")]
+    var itemArray = Array<Note>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,19 +32,15 @@ class NotePadListViewController: UITableViewController {
     // MARK: TableView Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("Did select item: \(itemArray[indexPath.row])")
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // To turn off selection color use:
-//        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
-        
         let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
         
-        createNoteView.savedNoteTitle = itemArray[indexPath.row].title
-        createNoteView.savedNoteContent = itemArray[indexPath.row].content
-
+        createNoteView.savedNote = itemArray[indexPath.row]
+        
         view.addSubview(createNoteView)
+        
         createNoteView.delegate = self
 
     }
@@ -55,6 +51,8 @@ class NotePadListViewController: UITableViewController {
         
         let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
         
+        createNoteView.savedNote = nil
+        
         view.addSubview(createNoteView)
         
         createNoteView.delegate = self
@@ -63,9 +61,15 @@ class NotePadListViewController: UITableViewController {
 }
 
 extension NotePadListViewController: CreateNoteViewProtocol {
-    func send(title: String, content: String) {
-        let note = Note(title: title, content: content)
-        itemArray.append(note)
+    func send(note: Note) {
+        
+        if note.row == nil {
+            let note = Note(title: note.title, content: note.content, row: itemArray.count)
+            itemArray.append(note)
+        } else {
+            itemArray[note.row!] = note
+        }
+        
         tableView.reloadData()
     }
 }
