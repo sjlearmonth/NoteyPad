@@ -57,7 +57,15 @@ class CreateNoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
     }
     
     @IBAction func saveButtonTapped(_ UIButton: Any) {
-        var note = Note(title: noteTitle!.text!, content: noteContent!.text, row: nil)
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let note = Note(context: context)
+        
+        note.title = noteTitle.text
+        note.content = noteContent.text
+        note.row = -1
+        
         if savedNote != nil {
             note.row = savedNote!.row
         }

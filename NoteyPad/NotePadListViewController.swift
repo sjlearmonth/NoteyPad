@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import CoreData
 
 class NotePadListViewController: UITableViewController {
 
     var itemArray = Array<Note>()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var selectedCategory: Category? {
+        didSet {
+//            loadItems()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,7 +30,7 @@ class NotePadListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteyItemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         
         cell.textLabel?.text = itemArray[indexPath.row].title
         
@@ -48,7 +56,7 @@ class NotePadListViewController: UITableViewController {
     // MARK: - Add new note
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
+            
         let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
         
         createNoteView.savedNote = nil
@@ -58,18 +66,28 @@ class NotePadListViewController: UITableViewController {
         createNoteView.delegate = self
         
     }
+    
+    func saveItems() {
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving items: \(error)")
+        }
+    }
 }
 
 extension NotePadListViewController: CreateNoteViewProtocol {
+    
     func send(note: Note) {
         
-        if note.row == nil {
-            let note = Note(title: note.title, content: note.content, row: itemArray.count)
+        if note.row == -1 {
+            note.row = Int16(itemArray.count)
             itemArray.append(note)
         } else {
-            itemArray[note.row!] = note
+            itemArray[Int(note.row)] = note
         }
-        
+        saveItems()
         tableView.reloadData()
     }
 }

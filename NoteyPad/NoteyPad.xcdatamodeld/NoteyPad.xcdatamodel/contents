@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="selectedNote" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="title" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
-        <attribute name="content" optional="YES" attributeType="String"/>
-        <attribute name="row" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+    <entity name="Note" representedClassName=".Note" syncable="YES" codeGenerationType="class">
+        <attribute name="content" attributeType="String"/>
+        <attribute name="row" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="Item" positionX="158.7521362304688" positionY="-17.9080810546875" width="128" height="58"/>
-        <element name="Note" positionX="63" positionY="9" width="128" height="88"/>
+        <element name="Category" positionX="-380.6295166015625" positionY="205.9625244140625" width="128" height="73"/>
+        <element name="Note" positionX="-127.605224609375" positionY="36.68505859375" width="128" height="89"/>
     </elements>
 </model>
