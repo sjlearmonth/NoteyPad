@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UNY-r4-skp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UQe-Ae-2xu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,93 +9,111 @@
     </dependencies>
     <scenes>
         <!--NoteyPad-->
-        <scene sceneID="Azn-6g-tjf">
+        <scene sceneID="nfn-Gs-tY6">
             <objects>
-                <tableViewController id="GTk-e7-JUJ" userLabel="NoteyPad" customClass="CategoryViewController" customModule="NoteyPad" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cbn-JI-42A">
+                <tableViewController id="IrN-3V-2bV" userLabel="NoteyPad" customClass="CategoryViewController" customModule="NoteyPad" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="o6z-s8-x2P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="aqb-VT-KA1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="7YT-eH-LvD">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aqb-VT-KA1" id="Fpp-vP-QuV">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7YT-eH-LvD" id="27E-th-B9V">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="GTk-e7-JUJ" id="v7Y-GE-hNw"/>
-                            <outlet property="delegate" destination="GTk-e7-JUJ" id="HFB-Z9-R06"/>
+                            <outlet property="dataSource" destination="IrN-3V-2bV" id="4Hn-8i-eog"/>
+                            <outlet property="delegate" destination="IrN-3V-2bV" id="pbV-e5-TaN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1iR-Ok-cs3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kwj-Y4-3RU">
+                    <navigationItem key="navigationItem" title="NoteyPad" id="fc9-Gu-AYc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hrH-oh-QDt">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="GTk-e7-JUJ" id="Nah-vR-DKW"/>
+                                <action selector="addButtonPressed:" destination="IrN-3V-2bV" id="NSV-RM-Ty5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="hRM-Rb-ZZ1" kind="show" identifier="fromCategoryToItems" id="YRh-IT-dN4"/>
+                        <segue destination="NRR-VK-jRI" kind="show" identifier="fromCategoryToItems" id="scV-p3-4Ln"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XXr-Xm-iFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Jk-m8-mDv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="21"/>
+            <point key="canvasLocation" x="723.1884057971015" y="56.919642857142854"/>
         </scene>
         <!--Items-->
-        <scene sceneID="uzs-3v-tyn">
+        <scene sceneID="tW0-5N-wHP">
             <objects>
-                <tableViewController id="hRM-Rb-ZZ1" userLabel="Items" customClass="NotePadListViewController" customModule="NoteyPad" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Laq-Hh-erK">
+                <tableViewController id="NRR-VK-jRI" userLabel="Items" customClass="NotePadListViewController" customModule="NoteyPad" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="10f-fW-lGK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="5KQ-gP-MRT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="aZu-f5-uWz">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5KQ-gP-MRT" id="3wE-82-CkS">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aZu-f5-uWz" id="pMw-1Y-cwU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="hRM-Rb-ZZ1" id="3bQ-Mh-CQ5"/>
-                            <outlet property="delegate" destination="hRM-Rb-ZZ1" id="MDU-y9-9RS"/>
+                            <outlet property="dataSource" destination="NRR-VK-jRI" id="YZB-9P-v8Z"/>
+                            <outlet property="delegate" destination="NRR-VK-jRI" id="54b-qv-f5T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3YF-kh-sZp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wQL-o3-lUV">
+                    <navigationItem key="navigationItem" title="Items" id="LBq-Hd-bYe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zxq-9C-NcG">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="hRM-Rb-ZZ1" id="e3R-Pc-oHn"/>
+                                <action selector="addButtonPressed:" destination="NRR-VK-jRI" id="shP-e7-Hn4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T4P-rO-8IB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fea-Ch-XVM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1774" y="21"/>
+            <point key="canvasLocation" x="1602.8985507246377" y="56.919642857142854"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="9NQ-sW-Vsb">
+        <scene sceneID="db1-Y9-q2R">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UNY-r4-skp" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UQe-Ae-2xu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="lessthan" catalog="system" id="5Qm-4T-eKN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KU0-2a-zK0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <navigationBarAppearance key="standardAppearance">
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                            <barButtonItemAppearance key="backButtonAppearance">
+                                <barButtonItemStateAppearance key="normal">
+                                    <textAttributes key="titleTextAttributes">
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textAttributes>
+                                </barButtonItemStateAppearance>
+                                <barButtonItemStateAppearance key="highlighted"/>
+                                <barButtonItemStateAppearance key="disabled"/>
+                                <barButtonItemStateAppearance key="focused"/>
+                            </barButtonItemAppearance>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -105,6 +123,16 @@
                             <textAttributes key="largeTitleTextAttributes">
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textAttributes>
+                            <barButtonItemAppearance key="buttonAppearance">
+                                <barButtonItemStateAppearance key="normal">
+                                    <textAttributes key="titleTextAttributes">
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textAttributes>
+                                </barButtonItemStateAppearance>
+                                <barButtonItemStateAppearance key="highlighted"/>
+                                <barButtonItemStateAppearance key="disabled"/>
+                                <barButtonItemStateAppearance key="focused"/>
+                            </barButtonItemAppearance>
                             <barButtonItemAppearance key="backButtonAppearance">
                                 <barButtonItemStateAppearance key="normal">
                                     <textAttributes key="titleTextAttributes">
@@ -119,16 +147,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="GTk-e7-JUJ" kind="relationship" relationship="rootViewController" id="VP2-Jy-Us3"/>
+                        <segue destination="IrN-3V-2bV" kind="relationship" relationship="rootViewController" id="UJA-HZ-PTh"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="skh-PI-RTV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3yB-il-NVR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71.014492753623188" y="21.428571428571427"/>
+            <point key="canvasLocation" x="-186.95652173913044" y="56.919642857142854"/>
         </scene>
     </scenes>
     <resources>
-        <image name="lessthan" catalog="system" width="128" height="111"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

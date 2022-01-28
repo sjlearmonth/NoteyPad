@@ -15,7 +15,7 @@ class NotePadListViewController: UITableViewController {
     
     var selectedCategory: Category? {
         didSet {
-//            loadItems()
+            loadItems()
         }
     }
 
@@ -75,7 +75,18 @@ class NotePadListViewController: UITableViewController {
             print("Error saving items: \(error)")
         }
     }
+    
+    func loadItems() {
+        let request: NSFetchRequest<Note> = Note.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context: \(error)")
+        }
+    }
 }
+
+// MARK: - Create Note View Protocol
 
 extension NotePadListViewController: CreateNoteViewProtocol {
     
