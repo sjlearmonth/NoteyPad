@@ -21,6 +21,7 @@ class NotePadListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.setEditing(true, animated: true)
     }
     
     // MARK: TableView Datasource Methods
@@ -44,13 +45,43 @@ class NotePadListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
-        
-        createNoteView.savedNote = itemArray[indexPath.row]
-        
-        view.addSubview(createNoteView)
-        
-        createNoteView.delegate = self
 
+        createNoteView.savedNote = itemArray[indexPath.row]
+
+        view.addSubview(createNoteView)
+
+        createNoteView.delegate = self
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            context.delete(itemArray[indexPath.row])
+            itemArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // do something
+            
+            let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
+
+            createNoteView.savedNote = nil
+
+            view.addSubview(createNoteView)
+
+            createNoteView.delegate = self
+
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.row == 0 {
+            return .insert
+        } else if indexPath.row == itemArray.count - 1 {
+            return .insert
+        } else {
+            return .delete
+        }
     }
     
     // MARK: - Add new note
