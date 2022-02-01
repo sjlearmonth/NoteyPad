@@ -18,10 +18,16 @@ class NotePadListViewController: UITableViewController {
             loadItems()
         }
     }
+    
+    @IBOutlet weak var searchBar: UISearchBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.setEditing(true, animated: true)
+        
+        searchBar.autocapitalizationType = .none
+        
+//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
     }
     
     // MARK: TableView Datasource Methods
@@ -60,30 +66,9 @@ class NotePadListViewController: UITableViewController {
             context.delete(itemArray[indexPath.row])
             itemArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // do something
-            
-            let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
-
-            createNoteView.savedNote = nil
-
-            view.addSubview(createNoteView)
-
-            createNoteView.delegate = self
-
         }
     }
-    
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath.row == 0 {
-            return .insert
-        } else if indexPath.row == itemArray.count - 1 {
-            return .insert
-        } else {
-            return .delete
-        }
-    }
-    
+        
     // MARK: - Add new note
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -107,13 +92,15 @@ class NotePadListViewController: UITableViewController {
         }
     }
     
-    func loadItems() {
-        let request: NSFetchRequest<Note> = Note.fetchRequest()
+    func loadItems(using request: NSFetchRequest<Note> = Note.fetchRequest()) {
+        
         do {
             itemArray = try context.fetch(request)
         } catch {
             print("Error fetching data from context: \(error)")
         }
+        
+        tableView.reloadData()
     }
 }
 
@@ -131,5 +118,32 @@ extension NotePadListViewController: CreateNoteViewProtocol {
         }
         saveItems()
         tableView.reloadData()
+    }
+}
+
+// MARK: - SearchBar delegate methods
+
+extension NotePadListViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request: NSFetchRequest<Note> = Note.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItems(using: request)
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" {
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }

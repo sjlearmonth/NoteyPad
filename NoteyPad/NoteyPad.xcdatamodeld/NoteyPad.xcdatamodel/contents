@@ -6,13 +6,12 @@
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES" codeGenerationType="class">
         <attribute name="content" attributeType="String"/>
-        <attribute name="insert" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="row" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category"/>
     </entity>
     <elements>
         <element name="Category" positionX="-380.6295166015625" positionY="205.9625244140625" width="128" height="73"/>
-        <element name="Note" positionX="-127.605224609375" positionY="36.68505859375" width="128" height="104"/>
+        <element name="Note" positionX="-127.605224609375" positionY="36.68505859375" width="128" height="89"/>
     </elements>
 </model>
