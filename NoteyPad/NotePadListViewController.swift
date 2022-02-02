@@ -11,13 +11,15 @@ import CoreData
 class NotePadListViewController: UITableViewController {
 
     var itemArray = Array<Note>()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var selectedCategory: Category? {
         didSet {
             loadItems()
         }
     }
+
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
 
@@ -90,9 +92,19 @@ class NotePadListViewController: UITableViewController {
         } catch {
             print("Error saving items: \(error)")
         }
+        
+        tableView.reloadData()
     }
     
-    func loadItems(using request: NSFetchRequest<Note> = Note.fetchRequest()) {
+    func loadItems(using request: NSFetchRequest<Note> = Note.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+        
+        if let additionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
         
         do {
             itemArray = try context.fetch(request)
@@ -111,10 +123,15 @@ extension NotePadListViewController: CreateNoteViewProtocol {
     func send(note: Note) {
         
         if note.row == -1 {
+            
             note.row = Int16(itemArray.count)
+            note.parentCategory = selectedCategory
             itemArray.append(note)
+            
         } else {
+            
             itemArray[Int(note.row)] = note
+            
         }
         saveItems()
         tableView.reloadData()
@@ -129,11 +146,11 @@ extension NotePadListViewController: UISearchBarDelegate {
         
         let request: NSFetchRequest<Note> = Note.fetchRequest()
         
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
         
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
-        loadItems(using: request)
+        loadItems(using: request, predicate: predicate)
         
     }
     

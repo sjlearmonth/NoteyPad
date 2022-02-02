@@ -64,17 +64,17 @@
 		C41B5FE72791DD3A00AD1A19 /* NoteyPad */ = {
 			isa = PBXGroup;
 			children = (
-				C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */,
-				C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */,
 				C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */,
 				C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */,
+				C4077B9B279B095D0083DFCA /* CreateNoteView.swift */,
+				C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */,
 				C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */,
-				C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */,
+				C4077B9D279B09720083DFCA /* CreateNoteView.xib */,
 				C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */,
 				C41B5FF92791DD3B00AD1A19 /* Info.plist */,
-				C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */,
-				C4077B9B279B095D0083DFCA /* CreateNoteView.swift */,
-				C4077B9D279B09720083DFCA /* CreateNoteView.xib */,
+				C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */,
+				C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */,
+				C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */,
 			);
 			path = NoteyPad;
 			sourceTree = "<group>";

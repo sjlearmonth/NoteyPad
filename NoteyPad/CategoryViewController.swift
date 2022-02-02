@@ -20,11 +20,16 @@ class CategoryViewController: UITableViewController {
         loadCategories()
     }
 
-    // MARK: - Table view data source
+    // MARK: - TableView Data Source Methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
@@ -41,11 +46,12 @@ class CategoryViewController: UITableViewController {
         performSegue(withIdentifier: "fromCategoryToItems", sender: self)
         
         tableView.deselectRow(at: indexPath, animated: true)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! NotePadListViewController
-        
+
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedCategory = categories[indexPath.row]
         }
@@ -72,7 +78,7 @@ class CategoryViewController: UITableViewController {
             print("Error loading categories: \(error)")
         }
         
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     // MARK: - Add New Category
