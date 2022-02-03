@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BCA65B8BA25B9F5B62C96FA /* Pods_NoteyPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E053749640EEAA1C7AFDE517 /* Pods_NoteyPad.framework */; };
 		C4077B9C279B095D0083DFCA /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4077B9B279B095D0083DFCA /* CreateNoteView.swift */; };
 		C4077B9E279B09720083DFCA /* CreateNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4077B9D279B09720083DFCA /* CreateNoteView.xib */; };
 		C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */; };
@@ -17,9 +18,12 @@
 		C41B5FF52791DD3B00AD1A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */; };
 		C41B5FF82791DD3B00AD1A19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */; };
 		C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */; };
+		C4CCABFD27AC33F8003666FE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CCABFC27AC33F8003666FE /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03AE174C382664BEB07DFD88 /* Pods-NoteyPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteyPad.release.xcconfig"; path = "Target Support Files/Pods-NoteyPad/Pods-NoteyPad.release.xcconfig"; sourceTree = "<group>"; };
+		704B3DF279E2568D18441CEE /* Pods-NoteyPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteyPad.debug.xcconfig"; path = "Target Support Files/Pods-NoteyPad/Pods-NoteyPad.debug.xcconfig"; sourceTree = "<group>"; };
 		C4077B9B279B095D0083DFCA /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		C4077B9D279B09720083DFCA /* CreateNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNoteView.xib; sourceTree = "<group>"; };
 		C41B5FE52791DD3A00AD1A19 /* NoteyPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteyPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +36,8 @@
 		C41B5FF72791DD3B00AD1A19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C41B5FF92791DD3B00AD1A19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		C4CCABFC27AC33F8003666FE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		E053749640EEAA1C7AFDE517 /* Pods_NoteyPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoteyPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BCA65B8BA25B9F5B62C96FA /* Pods_NoteyPad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		126DFD40B56176A684F4C088 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E053749640EEAA1C7AFDE517 /* Pods_NoteyPad.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E509E262AFC49E477A854FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				704B3DF279E2568D18441CEE /* Pods-NoteyPad.debug.xcconfig */,
+				03AE174C382664BEB07DFD88 /* Pods-NoteyPad.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C41B5FDC2791DD3A00AD1A19 = {
 			isa = PBXGroup;
 			children = (
 				C41B5FE72791DD3A00AD1A19 /* NoteyPad */,
 				C41B5FE62791DD3A00AD1A19 /* Products */,
+				5E509E262AFC49E477A854FE /* Pods */,
+				126DFD40B56176A684F4C088 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +101,7 @@
 				C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */,
 				C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */,
 				C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */,
+				C4CCABFC27AC33F8003666FE /* Data.swift */,
 			);
 			path = NoteyPad;
 			sourceTree = "<group>";
@@ -86,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C41B5FFC2791DD3B00AD1A19 /* Build configuration list for PBXNativeTarget "NoteyPad" */;
 			buildPhases = (
+				55FB2FA4C1692576D1E6877B /* [CP] Check Pods Manifest.lock */,
 				C41B5FE12791DD3A00AD1A19 /* Sources */,
 				C41B5FE22791DD3A00AD1A19 /* Frameworks */,
 				C41B5FE32791DD3A00AD1A19 /* Resources */,
+				111F674A8A5840BF80A83CAC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,11 +175,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		111F674A8A5840BF80A83CAC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NoteyPad/Pods-NoteyPad-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NoteyPad/Pods-NoteyPad-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NoteyPad/Pods-NoteyPad-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55FB2FA4C1692576D1E6877B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NoteyPad-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C41B5FE12791DD3A00AD1A19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4CCABFD27AC33F8003666FE /* Data.swift in Sources */,
 				C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */,
 				C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */,
 				C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */,
@@ -300,6 +372,7 @@
 		};
 		C41B5FFD2791DD3B00AD1A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 704B3DF279E2568D18441CEE /* Pods-NoteyPad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -330,6 +403,7 @@
 		};
 		C41B5FFE2791DD3B00AD1A19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03AE174C382664BEB07DFD88 /* Pods-NoteyPad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
