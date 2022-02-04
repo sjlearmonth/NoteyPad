@@ -14,11 +14,11 @@
 		C41B5FEB2791DD3A00AD1A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */; };
 		C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */; };
 		C41B5FF02791DD3A00AD1A19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */; };
-		C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */; };
 		C41B5FF52791DD3B00AD1A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */; };
 		C41B5FF82791DD3B00AD1A19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */; };
+		C4AA61B527AD974F008DACF2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B427AD974F008DACF2 /* Note.swift */; };
+		C4AA61B727AD976C008DACF2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B627AD976C008DACF2 /* Category.swift */; };
 		C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */; };
-		C4CCABFD27AC33F8003666FE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CCABFC27AC33F8003666FE /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +31,12 @@
 		C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePadListViewController.swift; sourceTree = "<group>"; };
 		C41B5FEF2791DD3A00AD1A19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C41B5FF22791DD3A00AD1A19 /* NoteyPad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteyPad.xcdatamodel; sourceTree = "<group>"; };
 		C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C41B5FF72791DD3B00AD1A19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C41B5FF92791DD3B00AD1A19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4AA61B427AD974F008DACF2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		C4AA61B627AD976C008DACF2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		C4CCABFC27AC33F8003666FE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		E053749640EEAA1C7AFDE517 /* Pods_NoteyPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoteyPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,6 @@
 				C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */,
 				C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */,
 				C4077B9B279B095D0083DFCA /* CreateNoteView.swift */,
-				C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */,
 				C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */,
 				C4077B9D279B09720083DFCA /* CreateNoteView.xib */,
 				C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */,
@@ -101,7 +100,8 @@
 				C41B5FE82791DD3A00AD1A19 /* AppDelegate.swift */,
 				C41B5FEA2791DD3A00AD1A19 /* SceneDelegate.swift */,
 				C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */,
-				C4CCABFC27AC33F8003666FE /* Data.swift */,
+				C4AA61B427AD974F008DACF2 /* Note.swift */,
+				C4AA61B627AD976C008DACF2 /* Category.swift */,
 			);
 			path = NoteyPad;
 			sourceTree = "<group>";
@@ -222,13 +222,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4CCABFD27AC33F8003666FE /* Data.swift in Sources */,
 				C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */,
-				C41B5FF32791DD3A00AD1A19 /* NoteyPad.xcdatamodeld in Sources */,
+				C4AA61B527AD974F008DACF2 /* Note.swift in Sources */,
 				C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */,
 				C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */,
 				C4077B9C279B095D0083DFCA /* CreateNoteView.swift in Sources */,
 				C41B5FEB2791DD3A00AD1A19 /* SceneDelegate.swift in Sources */,
+				C4AA61B727AD976C008DACF2 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,19 +454,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		C41B5FF12791DD3A00AD1A19 /* NoteyPad.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C41B5FF22791DD3A00AD1A19 /* NoteyPad.xcdatamodel */,
-			);
-			currentVersion = C41B5FF22791DD3A00AD1A19 /* NoteyPad.xcdatamodel */;
-			path = NoteyPad.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C41B5FDD2791DD3A00AD1A19 /* Project object */;
 }

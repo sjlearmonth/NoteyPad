@@ -14,7 +14,7 @@ class NotePadListViewController: UITableViewController {
     
     var selectedCategory: Category? {
         didSet {
-            loadItems()
+//            loadItems()
         }
     }
 
@@ -58,18 +58,18 @@ class NotePadListViewController: UITableViewController {
 
         view.addSubview(createNoteView)
 
-        createNoteView.delegate = self
+//        createNoteView.delegate = self
         
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            context.delete(itemArray[indexPath.row])
-            itemArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        
+//        if editingStyle == .delete {
+//            context.delete(itemArray[indexPath.row])
+//            itemArray.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
         
     // MARK: - Add new note
     
@@ -81,7 +81,7 @@ class NotePadListViewController: UITableViewController {
         
         view.addSubview(createNoteView)
         
-        createNoteView.delegate = self
+//        createNoteView.delegate = self
         
     }
     
@@ -96,71 +96,71 @@ class NotePadListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadItems(using request: NSFetchRequest<Note> = Note.fetchRequest(), predicate: NSPredicate? = nil) {
-        
-        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-        
-        if let additionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
-        } else {
-            request.predicate = categoryPredicate
-        }
-        
-        do {
-            itemArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context: \(error)")
-        }
-        
-        tableView.reloadData()
-    }
+//    func loadItems(using request: NSFetchRequest<Note> = Note.fetchRequest(), predicate: NSPredicate? = nil) {
+//
+//        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+//
+//        if let additionalPredicate = predicate {
+//            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+//        } else {
+//            request.predicate = categoryPredicate
+//        }
+//
+//        do {
+//            itemArray = try context.fetch(request)
+//        } catch {
+//            print("Error fetching data from context: \(error)")
+//        }
+//
+//        tableView.reloadData()
+//    }
 }
 
 // MARK: - Create Note View Protocol
 
-extension NotePadListViewController: CreateNoteViewProtocol {
-    
-    func send(note: Note) {
-        
-        if note.row == -1 {
-            
-            note.row = Int16(itemArray.count)
-            note.parentCategory = selectedCategory
-            itemArray.append(note)
-            
-        } else {
-            
-            itemArray[Int(note.row)] = note
-            
-        }
-        saveItems()
-        tableView.reloadData()
-    }
-}
+//extension NotePadListViewController: CreateNoteViewProtocol {
+//
+//    func send(note: Note) {
+//
+//        if note.row == -1 {
+//
+//            note.row = Int16(itemArray.count)
+//            note.parentCategory = selectedCategory
+//            itemArray.append(note)
+//
+//        } else {
+//
+//            itemArray[Int(note.row)] = note
+//
+//        }
+//        saveItems()
+//        tableView.reloadData()
+//    }
+//}
 
 // MARK: - SearchBar delegate methods
 
-extension NotePadListViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        let request: NSFetchRequest<Note> = Note.fetchRequest()
-        
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-        loadItems(using: request, predicate: predicate)
-        
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText == "" {
-            loadItems()
-            DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
-            }
-        }
-    }
-}
+//extension NotePadListViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        let request: NSFetchRequest<Note> = Note.fetchRequest()
+//
+//        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+//
+//        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+//
+//        loadItems(using: request, predicate: predicate)
+//
+//    }
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//
+//        if searchText == "" {
+//            loadItems()
+//            DispatchQueue.main.async {
+//                searchBar.resignFirstResponder()
+//            }
+//        }
+//    }
+//}
