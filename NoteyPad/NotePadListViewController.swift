@@ -6,20 +6,20 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class NotePadListViewController: UITableViewController {
 
-    var itemArray = Array<Note>()
+    var noteArray: Results<Note>?
+    let realm = try! Realm()
     
     var selectedCategory: Category? {
         didSet {
-//            loadItems()
+            loadItems()
         }
     }
 
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var searchBar: UISearchBar!
 
@@ -35,13 +35,13 @@ class NotePadListViewController: UITableViewController {
     // MARK: TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        return noteArray?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row].title
+        cell.textLabel?.text = noteArray?[indexPath.row].title ?? "No Notes Added."
         
         return cell
     }
@@ -54,22 +54,30 @@ class NotePadListViewController: UITableViewController {
         
         let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
 
-        createNoteView.savedNote = itemArray[indexPath.row]
+        createNoteView.savedNote = noteArray?[indexPath.row]
 
         view.addSubview(createNoteView)
 
-//        createNoteView.delegate = self
+        createNoteView.delegate = self
         
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        
-//        if editingStyle == .delete {
-//            context.delete(itemArray[indexPath.row])
-//            itemArray.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if let note = noteArray?[indexPath.row] {
+            
+            if editingStyle == .delete {
+                do {
+                    try realm.write {
+                        realm.delete(note)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                } catch {
+                    print("Error deleting note: \(error)")
+                }
+            }
+        }
+    }
         
     // MARK: - Add new note
     
@@ -81,86 +89,67 @@ class NotePadListViewController: UITableViewController {
         
         view.addSubview(createNoteView)
         
-//        createNoteView.delegate = self
+        createNoteView.delegate = self
         
     }
     
-    func saveItems() {
+    func loadItems() {
         
-        do {
-            try context.save()
-        } catch {
-            print("Error saving items: \(error)")
-        }
-        
+        noteArray = selectedCategory?.notes.sorted(byKeyPath: "title", ascending: true)
+
         tableView.reloadData()
     }
-    
-//    func loadItems(using request: NSFetchRequest<Note> = Note.fetchRequest(), predicate: NSPredicate? = nil) {
-//
-//        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-//
-//        if let additionalPredicate = predicate {
-//            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
-//        } else {
-//            request.predicate = categoryPredicate
-//        }
-//
-//        do {
-//            itemArray = try context.fetch(request)
-//        } catch {
-//            print("Error fetching data from context: \(error)")
-//        }
-//
-//        tableView.reloadData()
-//    }
 }
 
 // MARK: - Create Note View Protocol
 
-//extension NotePadListViewController: CreateNoteViewProtocol {
-//
-//    func send(note: Note) {
-//
-//        if note.row == -1 {
-//
-//            note.row = Int16(itemArray.count)
-//            note.parentCategory = selectedCategory
-//            itemArray.append(note)
-//
-//        } else {
-//
-//            itemArray[Int(note.row)] = note
-//
-//        }
-//        saveItems()
-//        tableView.reloadData()
-//    }
-//}
+extension NotePadListViewController: CreateNoteViewProtocol {
+
+    func send(note: Note) {
+        
+        if let currentCategory = selectedCategory {
+            do {
+                try realm.write {
+                    
+                    if note.row == -1 {
+                        
+                        note.row = noteArray?.count ?? 0
+                        currentCategory.notes.append(note)
+                        
+                    } else {
+                        
+                        currentCategory.notes[note.row] = note
+                        
+                    }
+                }
+                
+            } catch {
+                print("Error saving new notes: \(error)")
+            }
+        }
+        
+        tableView.reloadData()
+    }
+}
 
 // MARK: - SearchBar delegate methods
 
-//extension NotePadListViewController: UISearchBarDelegate {
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//
-//        let request: NSFetchRequest<Note> = Note.fetchRequest()
-//
-//        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-//
-//        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//
-//        loadItems(using: request, predicate: predicate)
-//
-//    }
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        if searchText == "" {
-//            loadItems()
-//            DispatchQueue.main.async {
-//                searchBar.resignFirstResponder()
-//            }
-//        }
-//    }
-//}
+extension NotePadListViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        noteArray = noteArray?.filter("title CONTAINS[cd] %@ ", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        
+        tableView.reloadData()
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        if searchText == "" {
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+}
