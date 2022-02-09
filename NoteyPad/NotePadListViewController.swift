@@ -53,11 +53,10 @@ class NotePadListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
-
+        
         createNoteView.savedNote = noteArray?[indexPath.row]
-
         view.addSubview(createNoteView)
-
+        
         createNoteView.delegate = self
         
     }
@@ -108,23 +107,24 @@ extension NotePadListViewController: CreateNoteViewProtocol {
     func send(note: Note) {
         
         if let currentCategory = selectedCategory {
-            do {
-                try realm.write {
-                    
-                    if note.row == -1 {
-                        
-                        note.row = noteArray?.count ?? 0
+            
+            if note.row == -1 {
+                
+                note.row = noteArray?.count ?? 0
+                do {
+                    try! realm.write {
                         currentCategory.notes.append(note)
-                        
-                    } else {
-                        
-                        currentCategory.notes[note.row] = note
-                        
+                    }
+                }
+            } else {
+                do {
+                    try! realm.write {
+                        let row = note.row
+                        currentCategory.notes[row] = note
                     }
                 }
                 
-            } catch {
-                print("Error saving new notes: \(error)")
+                
             }
         }
         
