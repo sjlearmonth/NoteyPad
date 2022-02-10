@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol CreateNoteViewProtocol: AnyObject {
     func send(note: Note)
@@ -34,6 +35,8 @@ class CreateNoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
     
     weak var delegate: CreateNoteViewProtocol!
     
+    let realm = try! Realm()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -57,19 +60,26 @@ class CreateNoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
     }
     
     @IBAction func saveButtonTapped(_ UIButton: Any) {
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-        let note = Note(context: context)
-        
-        note.title = noteTitle.text
-        note.content = noteContent.text
-        note.row = -1
-        
-        if savedNote != nil {
-            note.row = savedNote!.row
+        if let existingNote = savedNote {
+            
+            RealmManager.sharedInstance.update {
+                existingNote.title = noteTitle.text ?? "No Title"
+                existingNote.content = noteContent.text
+            }
+            delegate.send(note: existingNote)
+            
+        } else {
+            
+            let note = Note()
+            note.title = noteTitle.text ?? "No Title"
+            note.content = noteContent.text
+            note.row = -1
+            note.dateCreated = Date()
+            delegate.send(note: note)
+            
         }
-        self.delegate.send(note: note)
+        
         self.removeFromSuperview()
     }
     
