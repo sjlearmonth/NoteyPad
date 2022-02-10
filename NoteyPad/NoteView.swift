@@ -8,11 +8,11 @@
 import UIKit
 import RealmSwift
 
-protocol CreateNoteViewProtocol: AnyObject {
+protocol NoteViewProtocol: AnyObject {
     func send(note: Note)
 }
 
-class CreateNoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
+class NoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
 
     var savedNote: Note? {
         didSet {
@@ -33,7 +33,7 @@ class CreateNoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var noteTitle: UITextField!
     @IBOutlet weak var noteContent: UITextView!
     
-    weak var delegate: CreateNoteViewProtocol!
+    weak var delegate: NoteViewProtocol!
     
     let realm = try! Realm()
     
@@ -46,7 +46,7 @@ class CreateNoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
     
     func commonInit() {
         
-        let viewFromXib = Bundle.main.loadNibNamed("CreateNoteView", owner: self, options: nil)![0] as! UIView
+        let viewFromXib = Bundle.main.loadNibNamed("NoteView", owner: self, options: nil)![0] as! UIView
         viewFromXib.frame = self.bounds
         addSubview(viewFromXib)
     }

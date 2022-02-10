@@ -12,6 +12,6 @@ class Note: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var content: String = ""
     @objc dynamic var row: Int = 0
-    @objc dynamic var dateCreated: Date = Date()
+    @objc dynamic var dateCreated: Date?
     var parentCategory = LinkingObjects(fromType: Category.self, property: "notes")
 }

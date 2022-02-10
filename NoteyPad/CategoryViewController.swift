@@ -9,8 +9,6 @@ import UIKit
 import RealmSwift
 
 class CategoryViewController: UITableViewController {
-    
-    let realm = try! Realm()
 
     var categories: Results<Category>?
     
@@ -60,29 +58,15 @@ class CategoryViewController: UITableViewController {
     
     func save(category: Category) {
         
-        do {
-            try realm.write {
-                realm.add(category)
-            }
-        } catch {
-            print("Error saving category: \(error)")
-        }
+        RealmManager.sharedInstance.add(object: category, shouldUpdate: false)
         
         self.tableView.reloadData()
     }
 
     func loadCategories() {
         
-        categories = realm.objects(Category.self)
+        categories = RealmManager.sharedInstance.fetch(Category.self)
         
-//        let request: NSFetchRequest<Category> = Category.fetchRequest()
-//        
-//        do {
-//            categories = try context.fetch(request)
-//        } catch {
-//            print("Error loading categories: \(error)")
-//        }
-//        
         self.tableView.reloadData()
     }
     

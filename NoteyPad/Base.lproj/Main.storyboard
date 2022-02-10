@@ -64,13 +64,29 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="aZu-f5-uWz">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCellType" id="aZu-f5-uWz" customClass="NoteCell" customModule="NoteyPad" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aZu-f5-uWz" id="pMw-1Y-cwU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateAndTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J23-Cv-vuQ">
+                                            <rect key="frame" x="304" y="11.5" width="102" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="J23-Cv-vuQ" firstAttribute="centerY" secondItem="pMw-1Y-cwU" secondAttribute="centerY" id="b0F-1c-bUb"/>
+                                        <constraint firstItem="J23-Cv-vuQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pMw-1Y-cwU" secondAttribute="leading" constant="20" symbolic="YES" id="bjX-rK-OAC"/>
+                                        <constraint firstAttribute="trailing" secondItem="J23-Cv-vuQ" secondAttribute="trailing" constant="8" id="nS4-s6-XxM"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateAndTime" destination="J23-Cv-vuQ" id="qU2-a9-6NR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

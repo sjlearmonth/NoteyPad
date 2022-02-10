@@ -45,5 +45,10 @@ class RealmManager {
             realm.delete(object)
         }
     }
+    
+    func fetch<Element>(_ type: Element.Type) -> Results<Element> where Element : RealmFetchable {
+        let realm = try! Realm()
+        return realm.objects(type)
+    }
 }
 

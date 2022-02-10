@@ -11,7 +11,6 @@ import RealmSwift
 class NotePadListViewController: UITableViewController {
 
     var noteArray: Results<Note>?
-    let realm = try! Realm()
     
     var selectedCategory: Category? {
         didSet {
@@ -22,7 +21,7 @@ class NotePadListViewController: UITableViewController {
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var searchBar: UISearchBar!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,9 +38,14 @@ class NotePadListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "noteCellType", for: indexPath) as! NoteCell
         
         cell.textLabel?.text = noteArray?[indexPath.row].title ?? "No Notes Added."
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        cell.dateAndTime.text = formatter.string(from: (noteArray?[indexPath.row].dateCreated!)!)
         
         return cell
     }
@@ -52,12 +56,12 @@ class NotePadListViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
+        let noteView = NoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
         
-        createNoteView.savedNote = noteArray?[indexPath.row]
-        view.addSubview(createNoteView)
+        noteView.savedNote = noteArray?[indexPath.row]
+        view.addSubview(noteView)
         
-        createNoteView.delegate = self
+        noteView.delegate = self
         
     }
     
@@ -66,14 +70,8 @@ class NotePadListViewController: UITableViewController {
         if let note = noteArray?[indexPath.row] {
             
             if editingStyle == .delete {
-                do {
-                    try realm.write {
-                        realm.delete(note)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                    }
-                } catch {
-                    print("Error deleting note: \(error)")
-                }
+                RealmManager.sharedInstance.delete(object: note)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
     }
@@ -82,7 +80,7 @@ class NotePadListViewController: UITableViewController {
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
             
-        let createNoteView = CreateNoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
+        let createNoteView = NoteView(frame: CGRect(x: (self.view.frame.width - 240.0)/2.0, y: (self.view.frame.height - 300.0)/2.0, width: 240.0, height: 300.0))
         
         createNoteView.savedNote = nil
         
@@ -100,15 +98,18 @@ class NotePadListViewController: UITableViewController {
     }
 }
 
-// MARK: - Create Note View Protocol
+// MARK: - Note View Protocol
 
-extension NotePadListViewController: CreateNoteViewProtocol {
+extension NotePadListViewController: NoteViewProtocol {
 
     func send(note: Note) {
         if let currentCategory = selectedCategory {
             if note.row == -1 {
                 note.row = noteArray?.count ?? 0
-                RealmManager.sharedInstance.add(object: note)
+                
+                RealmManager.sharedInstance.update {
+                    currentCategory.notes.append(note)
+                }
             } else {
                 RealmManager.sharedInstance.update {
                     let row = note.row
