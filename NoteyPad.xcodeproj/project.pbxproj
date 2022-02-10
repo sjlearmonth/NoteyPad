@@ -16,6 +16,7 @@
 		C41B5FF02791DD3A00AD1A19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */; };
 		C41B5FF52791DD3B00AD1A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */; };
 		C41B5FF82791DD3B00AD1A19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */; };
+		C4328B0727B56BF800AF54C9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4328B0627B56BF800AF54C9 /* RealmManager.swift */; };
 		C4AA61B527AD974F008DACF2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B427AD974F008DACF2 /* Note.swift */; };
 		C4AA61B727AD976C008DACF2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B627AD976C008DACF2 /* Category.swift */; };
 		C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */; };
@@ -34,6 +35,7 @@
 		C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C41B5FF72791DD3B00AD1A19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C41B5FF92791DD3B00AD1A19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4328B0627B56BF800AF54C9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		C4AA61B427AD974F008DACF2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C4AA61B627AD976C008DACF2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				C41B5FF42791DD3B00AD1A19 /* Assets.xcassets */,
 				C4AA61B427AD974F008DACF2 /* Note.swift */,
 				C4AA61B627AD976C008DACF2 /* Category.swift */,
+				C4328B0627B56BF800AF54C9 /* RealmManager.swift */,
 			);
 			path = NoteyPad;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */,
+				C4328B0727B56BF800AF54C9 /* RealmManager.swift in Sources */,
 				C4AA61B527AD974F008DACF2 /* Note.swift in Sources */,
 				C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */,
 				C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */,

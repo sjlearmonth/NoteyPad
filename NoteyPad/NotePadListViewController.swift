@@ -105,29 +105,17 @@ class NotePadListViewController: UITableViewController {
 extension NotePadListViewController: CreateNoteViewProtocol {
 
     func send(note: Note) {
-        
         if let currentCategory = selectedCategory {
-            
             if note.row == -1 {
-                
                 note.row = noteArray?.count ?? 0
-                do {
-                    try! realm.write {
-                        currentCategory.notes.append(note)
-                    }
-                }
+                RealmManager.sharedInstance.add(object: note)
             } else {
-                do {
-                    try! realm.write {
-                        let row = note.row
-                        currentCategory.notes[row] = note
-                    }
+                RealmManager.sharedInstance.update {
+                    let row = note.row
+                    currentCategory.notes[row] = note
                 }
-                
-                
             }
         }
-        
         tableView.reloadData()
     }
 }
