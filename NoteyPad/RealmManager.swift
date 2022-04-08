@@ -40,9 +40,13 @@ class RealmManager {
         }
     }
 
-    func delete(object: Object) {
-        try! realm.write {
+    func delete(object: Object) throws {
+        do {
+            try realm.write {
             realm.delete(object)
+            }
+        } catch {
+                throw error
         }
     }
     

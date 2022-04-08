@@ -21,6 +21,7 @@
 		C4AA61B527AD974F008DACF2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B427AD974F008DACF2 /* Note.swift */; };
 		C4AA61B727AD976C008DACF2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B627AD976C008DACF2 /* Category.swift */; };
 		C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */; };
+		C4F9E7F02800AAE0004BFE76 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9E7EF2800AAE0004BFE76 /* SwipeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		C4AA61B427AD974F008DACF2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C4AA61B627AD976C008DACF2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		C4F9E7EF2800AAE0004BFE76 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		E053749640EEAA1C7AFDE517 /* Pods_NoteyPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoteyPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 			children = (
 				C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */,
 				C41B5FEC2791DD3A00AD1A19 /* NotePadListViewController.swift */,
+				C4F9E7EF2800AAE0004BFE76 /* SwipeTableViewController.swift */,
 				C4077B9B279B095D0083DFCA /* NoteView.swift */,
 				C4328B0827B583BB00AF54C9 /* NoteCell.swift */,
 				C41B5FEE2791DD3A00AD1A19 /* Main.storyboard */,
@@ -232,6 +235,7 @@
 				C4328B0727B56BF800AF54C9 /* RealmManager.swift in Sources */,
 				C4AA61B527AD974F008DACF2 /* Note.swift in Sources */,
 				C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */,
+				C4F9E7F02800AAE0004BFE76 /* SwipeTableViewController.swift in Sources */,
 				C41B5FE92791DD3A00AD1A19 /* AppDelegate.swift in Sources */,
 				C4077B9C279B095D0083DFCA /* NoteView.swift in Sources */,
 				C4328B0927B583BB00AF54C9 /* NoteCell.swift in Sources */,

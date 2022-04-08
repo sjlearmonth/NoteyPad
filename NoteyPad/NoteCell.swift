@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class NoteCell: UITableViewCell {
+class NoteCell: SwipeTableViewCell {
 
     @IBOutlet weak var dateAndTime: UILabel!
     

@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class NotePadListViewController: UITableViewController {
+class NotePadListViewController: SwipeTableViewController {
 
     var noteArray: Results<Note>?
     
@@ -27,6 +27,8 @@ class NotePadListViewController: UITableViewController {
         
         searchBar.autocapitalizationType = .none
         
+        tableView.rowHeight = 80.0
+        
 //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
@@ -38,13 +40,15 @@ class NotePadListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "noteCellType", for: indexPath) as! NoteCell
+        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath) as! NoteCell
         
         cell.textLabel?.text = noteArray?[indexPath.row].title ?? "No Notes Added."
         
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .full
         formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "en_GB")
         cell.dateAndTime.text = formatter.string(from: (noteArray?[indexPath.row].dateCreated!)!)
         
         return cell
@@ -64,19 +68,21 @@ class NotePadListViewController: UITableViewController {
         noteView.delegate = self
         
     }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if let note = noteArray?[indexPath.row] {
             
-            if editingStyle == .delete {
-                RealmManager.sharedInstance.delete(object: note)
-                tableView.deleteRows(at: [indexPath], with: .fade)
+    // MARK: - Delete Note Data From Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let noteForDeletion = self.noteArray?[indexPath.row] {
+            do {
+                try RealmManager.sharedInstance.delete(object: noteForDeletion)
+            } catch {
+                print("DEBUG: Error deleting note: \(error)")
             }
         }
     }
-        
-    // MARK: - Add new note
+
+    // MARK: - Add New Note
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
             
