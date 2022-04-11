@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class NotePadListViewController: SwipeTableViewController {
 
@@ -20,19 +21,61 @@ class NotePadListViewController: SwipeTableViewController {
 
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    // MARK: Properties
+    
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    // MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.autocapitalizationType = .none
-        
-        tableView.rowHeight = 80.0
+        configureSearchBar()
         
 //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        configureNavigationBar()
+        
+    }
+    
+    // MARK: Helper Methods
+    
+    private func configureNavigationBar() {
+        
+        self.title = selectedCategory?.name
+        
+        if let hexColor = selectedCategory?.color {
+
+            guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")}
+
+            if let backgroundColor = UIColor(hexString: hexColor) {
+                
+                let contrastColor = ContrastColorOf(backgroundColor, returnFlat: true)
+                
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.backgroundColor = backgroundColor
+                navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastColor]
+                navBar.scrollEdgeAppearance = navBarAppearance
+                
+                navBar.tintColor = contrastColor
+                
+                navigationItem.rightBarButtonItem?.tintColor = ContrastColorOf(backgroundColor, returnFlat: true)
+            }
+        }
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func configureSearchBar() {
+        
+        searchBar.autocapitalizationType = .none
+        
+    }
+        
     // MARK: TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,11 +88,19 @@ class NotePadListViewController: SwipeTableViewController {
         
         cell.textLabel?.text = noteArray?[indexPath.row].title ?? "No Notes Added."
         
+        let percentage = CGFloat(indexPath.row) / CGFloat(noteArray!.count)
+        print("DEBUG: percentage = \(percentage)")
+        if let color = UIColor(hexString: selectedCategory?.color ?? "7F7F7F") {
+            cell.backgroundColor = color.darken(byPercentage: percentage)
+            cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor ?? UIColor.white, returnFlat: true)
+        }
+
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "en_GB")
         cell.dateAndTime.text = formatter.string(from: (noteArray?[indexPath.row].dateCreated!)!)
+        cell.dateAndTime.textColor = ContrastColorOf(cell.backgroundColor ?? UIColor.white, returnFlat: true)
         
         return cell
     }

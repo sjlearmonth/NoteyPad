@@ -18,6 +18,7 @@
 		C41B5FF82791DD3B00AD1A19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B5FF62791DD3B00AD1A19 /* LaunchScreen.storyboard */; };
 		C4328B0727B56BF800AF54C9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4328B0627B56BF800AF54C9 /* RealmManager.swift */; };
 		C4328B0927B583BB00AF54C9 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4328B0827B583BB00AF54C9 /* NoteCell.swift */; };
+		C49EC323280481D800E7C77C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49EC322280481D700E7C77C /* Constants.swift */; };
 		C4AA61B527AD974F008DACF2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B427AD974F008DACF2 /* Note.swift */; };
 		C4AA61B727AD976C008DACF2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA61B627AD976C008DACF2 /* Category.swift */; };
 		C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */; };
@@ -39,6 +40,7 @@
 		C41B5FF92791DD3B00AD1A19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4328B0627B56BF800AF54C9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		C4328B0827B583BB00AF54C9 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		C49EC322280481D700E7C77C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C4AA61B427AD974F008DACF2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C4AA61B627AD976C008DACF2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C4C659FF27A070F6007CFAD6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				C4AA61B427AD974F008DACF2 /* Note.swift */,
 				C4AA61B627AD976C008DACF2 /* Category.swift */,
 				C4328B0627B56BF800AF54C9 /* RealmManager.swift */,
+				C49EC322280481D700E7C77C /* Constants.swift */,
 			);
 			path = NoteyPad;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C41B5FED2791DD3A00AD1A19 /* NotePadListViewController.swift in Sources */,
+				C49EC323280481D800E7C77C /* Constants.swift in Sources */,
 				C4328B0727B56BF800AF54C9 /* RealmManager.swift in Sources */,
 				C4AA61B527AD974F008DACF2 /* Note.swift in Sources */,
 				C4C65A0027A070F6007CFAD6 /* CategoryViewController.swift in Sources */,

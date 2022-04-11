@@ -7,18 +7,42 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class CategoryViewController: SwipeTableViewController {
 
+    // MARK: - Properties
+    
     var categories: Results<Category>?
+    
+    // MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadCategories()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar()
+    }
+    
+    // MARK: Helper Methods
+    
+    private func configureNavigationBar() {
+        
+        guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")}
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.backgroundColor = UIColor.systemBlue
+        let contrastColor = ContrastColorOf(UIColor.systemBlue, returnFlat: true)
+        navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastColor]
+        navBar.scrollEdgeAppearance = navBarAppearance
     }
 
+    
+        
     // MARK: - TableView Data Source Methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +58,18 @@ class CategoryViewController: SwipeTableViewController {
         let cell = super.tableView(super.tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet."
+        
+        if let hexString = categories?[indexPath.row].color {
+            cell.backgroundColor = UIColor(hexString: hexString)
+        } else {
+            let color = UIColor.randomFlat()
+            update(category: (categories?[indexPath.row])!, with: color)
+            cell.backgroundColor = color
+        }
+        
+        if let backgroundColor = cell.backgroundColor {
+            cell.textLabel?.textColor = ContrastColorOf(backgroundColor, returnFlat: true)
+        }
         
         return cell
     }
@@ -71,7 +107,14 @@ class CategoryViewController: SwipeTableViewController {
         
         self.tableView.reloadData()
     }
-    
+        
+    private func update(category: Category, with color: UIColor) {
+        
+        RealmManager.sharedInstance.update() {
+            category.color = color.hexValue()
+        }
+
+    }
     // MARK: - Delete Data From Swipe
     
     override func updateModel(at indexPath: IndexPath) {

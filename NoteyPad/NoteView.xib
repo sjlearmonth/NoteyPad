@@ -24,7 +24,7 @@
                     <rect key="frame" x="87" y="298" width="240" height="300"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IkF-gQ-bYI">
-                            <rect key="frame" x="20" y="10" width="200" height="30"/>
+                            <rect key="frame" x="20" y="20" width="200" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="SVA-09-eW1"/>
                             </constraints>
@@ -32,14 +32,14 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lwJ-SM-wJj">
-                            <rect key="frame" x="20" y="65" width="200" height="169"/>
+                            <rect key="frame" x="20" y="75" width="200" height="149"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="9lN-Md-8jt">
-                            <rect key="frame" x="20" y="259" width="200" height="31"/>
+                            <rect key="frame" x="20" y="249" width="200" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0v-LX-d0d">
                                     <rect key="frame" x="0.0" y="0.0" width="85" height="31"/>
@@ -66,12 +66,12 @@
                     <color key="backgroundColor" systemColor="systemTealColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="2be-Gu-tgb"/>
-                        <constraint firstItem="IkF-gQ-bYI" firstAttribute="top" secondItem="TGb-Ks-mEv" secondAttribute="top" constant="10" id="7s2-kO-K7P"/>
+                        <constraint firstItem="IkF-gQ-bYI" firstAttribute="top" secondItem="TGb-Ks-mEv" secondAttribute="top" constant="20" id="7s2-kO-K7P"/>
                         <constraint firstItem="lwJ-SM-wJj" firstAttribute="top" secondItem="IkF-gQ-bYI" secondAttribute="bottom" constant="25" id="KAD-Fo-lfB"/>
                         <constraint firstItem="lwJ-SM-wJj" firstAttribute="centerX" secondItem="TGb-Ks-mEv" secondAttribute="centerX" id="KXL-Jl-De4"/>
                         <constraint firstAttribute="trailing" secondItem="lwJ-SM-wJj" secondAttribute="trailing" constant="20" id="RDF-Ll-K4I"/>
                         <constraint firstAttribute="width" constant="240" id="edZ-A3-O2W"/>
-                        <constraint firstAttribute="bottom" secondItem="9lN-Md-8jt" secondAttribute="bottom" constant="10" id="ely-2W-Rhg"/>
+                        <constraint firstAttribute="bottom" secondItem="9lN-Md-8jt" secondAttribute="bottom" constant="20" id="ely-2W-Rhg"/>
                         <constraint firstAttribute="trailing" secondItem="9lN-Md-8jt" secondAttribute="trailing" constant="20" id="hmk-kL-NoW"/>
                         <constraint firstItem="IkF-gQ-bYI" firstAttribute="leading" secondItem="TGb-Ks-mEv" secondAttribute="leading" constant="20" id="huP-o7-tLZ"/>
                         <constraint firstItem="9lN-Md-8jt" firstAttribute="top" secondItem="lwJ-SM-wJj" secondAttribute="bottom" constant="25" id="lZt-uI-opt"/>
