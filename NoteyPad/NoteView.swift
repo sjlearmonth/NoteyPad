@@ -88,12 +88,16 @@ class NoteView: UIView, UITextViewDelegate, UITextFieldDelegate {
             textView.text = nil
             textView.textColor = UIColor.black
         }
-    }
+            }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.textColor == UIColor.lightGray {
             textField.text = nil
             textField.textColor = UIColor.black
         }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+                self.frame = CGRect(x:self.frame.origin.x, y:self.frame.origin.y - 200, width:self.frame.size.width, height:self.frame.size.height);
+            })
     }
 }
