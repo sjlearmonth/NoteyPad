@@ -10,7 +10,7 @@ import RealmSwift
 import ChameleonFramework
 
 class NotePadListViewController: SwipeTableViewController {
-
+    
     var noteArray: Results<Note>?
     
     var selectedCategory: Category? {
@@ -44,11 +44,13 @@ class NotePadListViewController: SwipeTableViewController {
     
     // MARK: Helper Methods
     
+    
+    
     private func configureNavigationBar() {
         
-        self.title = selectedCategory?.name
-        
-        if let hexColor = selectedCategory?.color {
+        if let hexColor = selectedCategory?.color1 {
+            
+            self.title = selectedCategory!.name
 
             guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")}
 
@@ -57,13 +59,18 @@ class NotePadListViewController: SwipeTableViewController {
                 let contrastColor = ContrastColorOf(backgroundColor, returnFlat: true)
                 
                 let navBarAppearance = UINavigationBarAppearance()
+                
                 navBarAppearance.backgroundColor = backgroundColor
                 navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastColor]
                 navBar.scrollEdgeAppearance = navBarAppearance
                 
                 navBar.tintColor = contrastColor
                 
-                navigationItem.rightBarButtonItem?.tintColor = ContrastColorOf(backgroundColor, returnFlat: true)
+//                navigationItem.rightBarButtonItem?.tintColor = ContrastColorOf(backgroundColor, returnFlat: true)
+                
+                searchBar.barTintColor = UIColor(hexString: hexColor)
+                searchBar.searchTextField.backgroundColor = contrastColor
+                searchBar.searchTextField.textColor = UIColor(hexString: hexColor)
             }
         }
     }
@@ -90,7 +97,7 @@ class NotePadListViewController: SwipeTableViewController {
         
         let percentage = CGFloat(indexPath.row) / CGFloat(noteArray!.count)
         print("DEBUG: percentage = \(percentage)")
-        if let color = UIColor(hexString: selectedCategory?.color ?? "7F7F7F") {
+        if let color = UIColor(hexString: selectedCategory?.color1 ?? "7F7F7F") {
             cell.backgroundColor = color.darken(byPercentage: percentage)
             cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor ?? UIColor.white, returnFlat: true)
         }

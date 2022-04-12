@@ -35,8 +35,9 @@ class CategoryViewController: SwipeTableViewController {
         guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")}
         
         let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.backgroundColor = UIColor.systemBlue
         let contrastColor = ContrastColorOf(UIColor.systemBlue, returnFlat: true)
+        
+        navBarAppearance.backgroundColor = UIColor.systemBlue
         navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastColor]
         navBar.scrollEdgeAppearance = navBarAppearance
     }
@@ -56,15 +57,22 @@ class CategoryViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = super.tableView(super.tableView, cellForRowAt: indexPath)
+        let cellRect = CGRect(x: cell.frame.minX, y: cell.frame.minY, width: cell.frame.size.width, height: cell.frame.size.height)
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet."
         
-        if let hexString = categories?[indexPath.row].color {
-            cell.backgroundColor = UIColor(hexString: hexString)
+        if let hexColor1 = categories?[indexPath.row].color1,
+           let hexColor2 = categories?[indexPath.row].color2 {
+            
+            let color1 = UIColor(hexString: hexColor1)!
+            let color2 = UIColor(hexString: hexColor2)!
+            
+            cell.backgroundColor = GradientColor(.leftToRight, frame: cellRect, colors: [color1, color2])
         } else {
-            let color = UIColor.randomFlat()
-            update(category: (categories?[indexPath.row])!, with: color)
-            cell.backgroundColor = color
+            let color1 = UIColor.randomFlat()
+            let color2 = UIColor.randomFlat()
+            update(category: (categories?[indexPath.row])!, with: [color1, color2])
+            cell.backgroundColor = GradientColor(.leftToRight, frame: cellRect, colors: [color1, color2])
         }
         
         if let backgroundColor = cell.backgroundColor {
@@ -108,10 +116,11 @@ class CategoryViewController: SwipeTableViewController {
         self.tableView.reloadData()
     }
         
-    private func update(category: Category, with color: UIColor) {
+    private func update(category: Category, with color: [UIColor]) {
         
         RealmManager.sharedInstance.update() {
-            category.color = color.hexValue()
+            category.color1 = color[0].hexValue()
+            category.color2 = color[1].hexValue()
         }
 
     }

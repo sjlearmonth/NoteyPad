@@ -10,6 +10,7 @@ import RealmSwift
 
 class Category: Object {
     @objc dynamic var name: String = ""
-    @objc dynamic var color: String?
+    @objc dynamic var color1: String?
+    @objc dynamic var color2: String?
     let notes = List<Note>()
 }

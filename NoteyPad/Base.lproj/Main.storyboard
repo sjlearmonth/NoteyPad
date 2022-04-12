@@ -96,14 +96,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Items" id="LBq-Hd-bYe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zxq-9C-NcG">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="NRR-VK-jRI" id="shP-e7-Hn4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="o7k-qz-20H" id="TTe-q9-Yst"/>
+                        <outlet property="searchBar" destination="o7k-qz-20H" id="mge-gj-94w"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fea-Ch-XVM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
