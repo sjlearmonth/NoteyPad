@@ -19,13 +19,17 @@ class CategoryViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
     }
     
     // MARK: Helper Methods
@@ -40,10 +44,26 @@ class CategoryViewController: SwipeTableViewController {
         navBarAppearance.backgroundColor = UIColor.systemBlue
         navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastColor]
         navBar.scrollEdgeAppearance = navBarAppearance
+        
+        setStatusBarStyle(using: contrastColor)
     }
 
-    
+    private func setStatusBarStyle(using contrastColor: UIColor) {
         
+        var contrastString = contrastColor.hexValue()
+        var contrastValue: UInt64 = 0
+        contrastString.removeFirst()
+        let scanner = Scanner(string: contrastString)
+        scanner.scanHexInt64(&contrastValue)
+        print("DEBUG: \(contrastString)")
+        
+        if contrastValue > 8355711 {
+            UIApplication.shared.statusBarStyle = .lightContent
+        } else {
+            UIApplication.shared.statusBarStyle = .default
+        }
+    }
+
     // MARK: - TableView Data Source Methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

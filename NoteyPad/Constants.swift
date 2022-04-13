@@ -8,4 +8,4 @@
 import Foundation
 
 let TABLEVIEW_ROW_HEIGHT = 80.0
-
+let MIDDLE_GRAY_COLOR = 8355711

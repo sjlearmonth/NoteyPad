@@ -18,7 +18,11 @@ class NotePadListViewController: SwipeTableViewController {
             loadItems()
         }
     }
-
+    
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
+    
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // MARK: Properties
@@ -29,22 +33,24 @@ class NotePadListViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSearchBar()
-        
+//        setNeedsStatusBarAppearanceUpdate()
+//        modalPresentationCapturesStatusBarAppearance = true
 //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         configureNavigationBar()
-        
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        UIApplication.shared.statusBarStyle = .default
+//    }
+    
     // MARK: Helper Methods
-    
-    
     
     private func configureNavigationBar() {
         
@@ -53,7 +59,7 @@ class NotePadListViewController: SwipeTableViewController {
             self.title = selectedCategory!.name
 
             guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")}
-
+            
             if let backgroundColor = UIColor(hexString: hexColor) {
                 
                 let contrastColor = ContrastColorOf(backgroundColor, returnFlat: true)
@@ -71,6 +77,10 @@ class NotePadListViewController: SwipeTableViewController {
                 searchBar.barTintColor = UIColor(hexString: hexColor)
                 searchBar.searchTextField.backgroundColor = contrastColor
                 searchBar.searchTextField.textColor = UIColor(hexString: hexColor)
+                
+                setStatusBarStyle(using: contrastColor)
+                
+//                navBar.barStyle = .black
             }
         }
     }
@@ -81,6 +91,23 @@ class NotePadListViewController: SwipeTableViewController {
         
         searchBar.autocapitalizationType = .none
         
+    }
+    
+    private func setStatusBarStyle(using contrastColor: UIColor) {
+        
+        var contrastString = contrastColor.hexValue()
+        var contrastValue: UInt64 = 0
+        contrastString.removeFirst()
+        let scanner = Scanner(string: contrastString)
+        scanner.scanHexInt64(&contrastValue)
+        print("DEBUG: \(contrastString)")
+        
+        if contrastValue > MIDDLE_GRAY_COLOR {
+            UIApplication.shared.statusBarStyle = .lightContent
+        } else {
+            UIApplication.shared.statusBarStyle = .default
+        }
+
     }
         
     // MARK: TableView Datasource Methods
