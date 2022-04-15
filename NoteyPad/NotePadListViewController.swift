@@ -19,12 +19,6 @@ class NotePadListViewController: SwipeTableViewController {
         }
     }
     
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
-    
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     // MARK: Properties
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -34,10 +28,6 @@ class NotePadListViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchBar()
-//        setNeedsStatusBarAppearanceUpdate()
-//        modalPresentationCapturesStatusBarAppearance = true
-//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,10 +35,10 @@ class NotePadListViewController: SwipeTableViewController {
         configureNavigationBar()
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        UIApplication.shared.statusBarStyle = .default
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
+    }
     
     // MARK: Helper Methods
     
@@ -80,7 +70,6 @@ class NotePadListViewController: SwipeTableViewController {
                 
                 setStatusBarStyle(using: contrastColor)
                 
-//                navBar.barStyle = .black
             }
         }
     }

@@ -57,7 +57,7 @@ class CategoryViewController: SwipeTableViewController {
         scanner.scanHexInt64(&contrastValue)
         print("DEBUG: \(contrastString)")
         
-        if contrastValue > 8355711 {
+        if contrastValue > MIDDLE_GRAY_COLOR {
             UIApplication.shared.statusBarStyle = .lightContent
         } else {
             UIApplication.shared.statusBarStyle = .default
